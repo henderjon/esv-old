@@ -31,6 +31,7 @@ const (
 func Render(g, m, d int) {
 	t, _ := template.New("all").Parse("\n\n{{.}}\n\n")
 
+	m -= 1 // zero index
 	d -= 1 // zero index
 
 	var p bytes.Buffer
@@ -57,6 +58,7 @@ func Render(g, m, d int) {
 func Ref(g, m, d int) {
 	t := template.New("all")
 
+	m -= 1 // zero index
 	d -= 1 // zero index
 
 	var ref string
