@@ -1,21 +1,19 @@
 package main
 
 import (
-	// esv "github.com/henderjon/esv/utils"
 	dj "github.com/henderjon/esv/djrp"
 	"github.com/henderjon/esv/fv"
-	// "encoding/json"
+	lkup "github.com/henderjon/esv/lookup"
 	"os"
-	// "log"
 	"flag"
 )
 
 var (
 	sub string
-	genre string
+	genre, ref string
 	next, prev int
 	help bool
-	fvFlags, djFlags *flag.FlagSet
+	fvFlags, djFlags, lkupFlags *flag.FlagSet
 )
 
 func init() {
@@ -27,15 +25,28 @@ func init() {
 	djFlags = flag.NewFlagSet("djFlags", flag.ContinueOnError)
 	djFlags.StringVar(&genre, "genre", "all", "(optional) [gospel|wisdom|nt|ot|all] which genre to read for the given day")
 	djFlags.BoolVar(&help, "help", false, "(optional) show this message")
+
+	lkupFlags = flag.NewFlagSet("lkupFlags", flag.ContinueOnError)
+	lkupFlags.StringVar(&ref, "ref", "Isa 26:3", "the reference to lookup")
+	lkupFlags.BoolVar(&help, "help", false, "(optional) show this message")
 }
 
 func main() {
-	switch os.Args[1] {
-	case "fv" :
-		verse()
-	case "read" :
-		reading()
+	if len(os.Args) < 2 {
+		lookup()
+	}else{
+		switch os.Args[1] {
+		case "fv" :
+			verse()
+		case "read" :
+			reading()
+		default:
+			fallthrough
+		case "lookup" :
+			lookup()
+		}
 	}
+	// log.Println("")
 }
 
 func verse() {
@@ -108,7 +119,19 @@ func reading() {
 			return
 		}
 	}
-
-
 }
 
+func lookup() {
+	if len(os.Args) > 3 {
+		lkupFlags.Parse(os.Args[2:])
+	}else{
+		lkupFlags.Parse(os.Args[1:])
+	}
+
+	if help {
+		lkupFlags.PrintDefaults()
+		return
+	}
+
+	lkup.Render(ref)
+}
