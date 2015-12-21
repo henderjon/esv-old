@@ -26,6 +26,7 @@ var (
 	}
 )
 
+// get a passage of scripture by reference from the ESV Web API
 func Query(ref string) bytes.Buffer {
 
 	vals := &url.Values{}

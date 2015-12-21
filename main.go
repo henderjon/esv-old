@@ -16,6 +16,7 @@ var (
 	fvFlags, djFlags, lkupFlags *flag.FlagSet
 )
 
+// sets up our subcommand flags
 func init() {
 	fvFlags = flag.NewFlagSet("fvFlags", flag.ContinueOnError)
 	fvFlags.IntVar(&next, "next", 0, "(optional) the verse for this week +n to view")
@@ -28,7 +29,7 @@ func init() {
 
 	lkupFlags = flag.NewFlagSet("lkupFlags", flag.ContinueOnError)
 	lkupFlags.StringVar(&ref, "ref", "Isa 26:3", "the reference to lookup")
-	lkupFlags.BoolVar(&help, "help", false, "(optional) show this message")
+	lkupFlags.BoolVar(&help, "help", false, "(optional) show this message; subcommands are fv, read, lookup")
 }
 
 func main() {
@@ -116,7 +117,6 @@ func reading() {
 			return
 		default:
 			dj.Render(v, s.Journal_last_read_month, s.Journal_last_read_day)
-			return
 		}
 	}
 }

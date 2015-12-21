@@ -4,6 +4,7 @@ type day struct {
 	gospel, nt, ot, wisdom string
 }
 
+// the Discipleship Journal Bible Reading Plan
 var Plan = [][]day{
    []day{
       {

@@ -25,6 +25,7 @@ func init() {
 	sets[Foundation] = FoundationSet
 }
 
+// get the current verse, given a start date
 func Current() int {
 	// Mon, 02 Jan 2006 15:04:05 -0700
 	format := "Jan 2, 2006"
@@ -35,6 +36,7 @@ func Current() int {
 	return int(math.Floor(time.Since(t).Hours() / 24 / 7))
 }
 
+// output the verse to STDOUT
 func Render(set, vn int) {
 	t, _ := template.New("all").Parse("\n\n{{.}}\n\n")
 

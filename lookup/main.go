@@ -7,7 +7,7 @@ import (
 	"text/template"
 )
 
-// renders the given genre's reading for the given month/day
+// renders the given passage reference
 func Render(ref string) {
 	t, _ := template.New("all").Parse("\n\n{{.}}\n\n")
 
