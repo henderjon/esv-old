@@ -1,18 +1,18 @@
 package main
 
 import (
+	"flag"
 	dj "github.com/henderjon/esv/djrp"
 	"github.com/henderjon/esv/fv"
 	lkup "github.com/henderjon/esv/lookup"
 	"os"
-	"flag"
 )
 
 var (
-	sub string
-	genre, ref string
-	next, prev int
-	help bool
+	sub                         string
+	genre, ref                  string
+	next, prev                  int
+	help                        bool
 	fvFlags, djFlags, lkupFlags *flag.FlagSet
 )
 
@@ -35,15 +35,15 @@ func init() {
 func main() {
 	if len(os.Args) < 2 {
 		lookup()
-	}else{
+	} else {
 		switch os.Args[1] {
-		case "fv" :
+		case "fv":
 			verse()
-		case "read" :
+		case "read":
 			reading()
 		default:
 			fallthrough
-		case "lookup" :
+		case "lookup":
 			lookup()
 		}
 	}
@@ -98,21 +98,21 @@ func reading() {
 	g := make(map[int]int, 0)
 	g[dj.Gospel] = dj.Gospel
 	g[dj.Wisdom] = dj.Wisdom
-	g[dj.Nt]     = dj.Nt
-	g[dj.Ot]     = dj.Ot
+	g[dj.Nt] = dj.Nt
+	g[dj.Ot] = dj.Ot
 
 	for _, v := range g {
 		switch genre {
-		case "gospel" :
+		case "gospel":
 			dj.Render(dj.Gospel, s.Journal_last_read_month, s.Journal_last_read_day)
 			return
-		case "wisdom" :
+		case "wisdom":
 			dj.Render(dj.Wisdom, s.Journal_last_read_month, s.Journal_last_read_day)
 			return
-		case "nt" :
+		case "nt":
 			dj.Render(dj.Nt, s.Journal_last_read_month, s.Journal_last_read_day)
 			return
-		case "ot" :
+		case "ot":
 			dj.Render(dj.Ot, s.Journal_last_read_month, s.Journal_last_read_day)
 			return
 		default:
@@ -124,7 +124,7 @@ func reading() {
 func lookup() {
 	if len(os.Args) > 3 {
 		lkupFlags.Parse(os.Args[2:])
-	}else{
+	} else {
 		lkupFlags.Parse(os.Args[1:])
 	}
 

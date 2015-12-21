@@ -1,14 +1,14 @@
 package esvapi
 
 import (
-	"net/url"
-	"net/http"
 	"bytes"
 	"log"
+	"net/http"
+	"net/url"
 )
 
 var (
-	api = "http://www.esvapi.org/v2/rest/passageQuery"
+	api  = "http://www.esvapi.org/v2/rest/passageQuery"
 	opts = map[string]string{
 		"key":                        "IP",
 		"output-format":              "plain-text",

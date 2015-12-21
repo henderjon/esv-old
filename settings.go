@@ -3,13 +3,13 @@ package main
 import (
 	"github.com/henderjon/jsonstore"
 	// "os"
-	"os/user"
 	"log"
+	"os/user"
 )
 
 var settingsDir *jsonstore.Bucket
 
-func init(){
+func init() {
 	u, _ := user.Current()
 
 	var err error
@@ -20,10 +20,10 @@ func init(){
 }
 
 type settings struct {
-	Fighter_verse_start string
-	Fighter_verse_set int
+	Fighter_verse_start     string
+	Fighter_verse_set       int
 	Journal_last_read_month int
-	Journal_last_read_day int
+	Journal_last_read_day   int
 }
 
 func (s *settings) get() {

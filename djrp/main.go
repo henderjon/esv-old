@@ -1,10 +1,10 @@
 package djrp
 
 import (
-	"github.com/henderjon/esv/esvapi"
-	"os"
-	"log"
 	"bytes"
+	"github.com/henderjon/esv/esvapi"
+	"log"
+	"os"
 	"text/template"
 )
 
@@ -37,13 +37,13 @@ func Render(g, m, d int) {
 	var p bytes.Buffer
 
 	switch {
-	case g == Gospel :
+	case g == Gospel:
 		p = esvapi.Query(Plan[m][d].gospel)
-	case g == Wisdom :
+	case g == Wisdom:
 		p = esvapi.Query(Plan[m][d].wisdom)
-	case g == Ot :
+	case g == Ot:
 		p = esvapi.Query(Plan[m][d].ot)
-	case g == Nt :
+	case g == Nt:
 		p = esvapi.Query(Plan[m][d].nt)
 	}
 
@@ -64,16 +64,16 @@ func Ref(g, m, d int) {
 	var ref string
 
 	switch {
-	case g == Gospel :
+	case g == Gospel:
 		ref = Plan[m][d].gospel
 		t, _ = t.Parse("\nGospel: {{.}}\n\n")
-	case g == Wisdom :
+	case g == Wisdom:
 		ref = Plan[m][d].nt
 		t, _ = t.Parse("\nWisdom: {{.}}\n\n")
-	case g == Ot :
+	case g == Ot:
 		ref = Plan[m][d].ot
 		t, _ = t.Parse("\nOld Testament: {{.}}\n\n")
-	case g == Nt :
+	case g == Nt:
 		ref = Plan[m][d].wisdom
 		t, _ = t.Parse("\nNew Testament: {{.}}\n\n")
 	}
@@ -84,5 +84,3 @@ func Ref(g, m, d int) {
 		log.Fatal(err)
 	}
 }
-
-

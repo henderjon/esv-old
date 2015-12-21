@@ -2,8 +2,8 @@ package lookup
 
 import (
 	"github.com/henderjon/esv/esvapi"
-	"os"
 	"log"
+	"os"
 	"text/template"
 )
 
@@ -19,5 +19,3 @@ func Render(ref string) {
 		log.Fatal(err)
 	}
 }
-
-

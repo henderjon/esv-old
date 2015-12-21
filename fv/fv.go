@@ -1,17 +1,17 @@
 package fv
 
 import (
-	"time"
 	"github.com/henderjon/esv/esvapi"
-	"text/template"
-	"math"
 	"log"
+	"math"
 	"os"
+	"text/template"
+	"time"
 )
 
 const (
 	start = "Jan 10, 2011" // 5 year cycle started here
-	Base = iota
+	Base  = iota
 	Extended
 	Foundation
 )
@@ -20,8 +20,8 @@ var sets map[int][]entry
 
 func init() {
 	sets = make(map[int][]entry, 0)
-	sets[Base]       = BaseSet
-	sets[Extended]   = ExtendedSet
+	sets[Base] = BaseSet
+	sets[Extended] = ExtendedSet
 	sets[Foundation] = FoundationSet
 }
 
