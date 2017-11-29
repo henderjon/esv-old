@@ -6,5 +6,5 @@ and a general by-reference passage lookup.
 
 # todo
 
-  - save journal reading progress
-  - allow altering of FV start date
+  - ~~save journal reading progress~~
+  - ~~allow altering of FV start date~~
