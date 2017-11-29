@@ -1,16 +1,18 @@
-package esvapi
+package main
 
 import (
 	"bytes"
+	"html/template"
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 var (
 	api  = "http://www.esvapi.org/v2/rest/passageQuery"
 	opts = map[string]string{
-		"key":                        "IP",
+		"key":                        "TEST",
 		"output-format":              "plain-text",
 		"include-short-copyright":    "0",
 		"include-copyright":          "0",
@@ -27,7 +29,7 @@ var (
 )
 
 // get a passage of scripture by reference from the ESV Web API
-func Query(ref string) bytes.Buffer {
+func query(ref string) string {
 
 	vals := &url.Values{}
 	vals.Set("passage", ref)
@@ -51,6 +53,7 @@ func Query(ref string) bytes.Buffer {
 		log.Fatal(err)
 	}
 
+	defer res.Body.Close()
 	buf := bytes.Buffer{}
 
 	_, err = buf.ReadFrom(res.Body)
@@ -58,6 +61,16 @@ func Query(ref string) bytes.Buffer {
 		log.Fatal(err)
 	}
 
-	res.Body.Close()
-	return buf
+	return buf.String()
+}
+
+// renders the given passage reference
+func render(ref string) {
+	t, _ := template.New("all").Parse("{{.}}\n")
+
+	err := t.Execute(os.Stdout, ref)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
