@@ -17,7 +17,7 @@ var (
 	memoryFlags, readingFlags, refFlags *flag.FlagSet
 )
 
-type passage struct {
+type fighterVerse struct {
 	BibleOrder, Year, Week int
 	Set, Ref               string
 }
@@ -86,7 +86,7 @@ func verse() {
 		year -= 5
 	}
 
-	var set map[int]map[int]passage
+	var set map[int]map[int]fighterVerse
 
 	switch true {
 	case foundationSet:
@@ -98,16 +98,18 @@ func verse() {
 	}
 
 	var out string
+	var passage passage
 
 	if ref, ok := set[year][week]; ok {
 		out = ref.Ref
 	}
 
 	if text {
-		out = query(out)
+		passage = query(out)
+		render(passage.Passages)
 	}
 
-	render(out)
+	render([]string{out})
 
 }
 
@@ -124,7 +126,8 @@ func lookup() {
 		return
 	}
 
-	render(query(ref))
+	passage := query(ref)
+	render(passage.Passages)
 }
 
 func readingPlan() {
@@ -144,6 +147,7 @@ func readingPlan() {
 	plan := getReadingPlan()
 
 	var out string
+	var passage passage
 
 	ref, ok := plan[int(month)][int(day)]
 	if !ok {
@@ -165,8 +169,9 @@ func readingPlan() {
 	}
 
 	if text {
-		out = query(out)
+		passage = query(out)
+		render(passage.Passages)
 	}
 
-	render(out)
+	render([]string{out})
 }

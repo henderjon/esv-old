@@ -2,37 +2,44 @@ package main
 
 import (
 	"bytes"
-	"html/template"
+	"encoding/json"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
+	"text/template"
 )
 
 var (
-	api  = "http://www.esvapi.org/v2/rest/passageQuery"
+	api  = "https://api.esv.org/v3/passage/text/"
 	opts = map[string]string{
-		"key":                        "TEST",
-		"output-format":              "plain-text",
-		"include-short-copyright":    "0",
-		"include-copyright":          "0",
-		"include-audio-link":         "0",
-		"include-word-ids":           "0",
-		"include-verse-ids":          "0",
-		"include-headings":           "0",
-		"include-subheadings":        "0",
-		"include-footnote-links":     "0",
-		"include-footnotes":          "0",
-		"include-verse-numbers":      "1",
-		"include-passage-references": "1",
+		"include-passage-references":       "true",
+		"include-first-verse-numbers":      "true",
+		"include-verse-numbers":            "true",
+		"include-footnotes":                "true",
+		"include-footnote-body":            "true",
+		"include-short-copyright":          "true",
+		"include-copyright":                "false",
+		"include-passage-horizontal-lines": "true",
+		"include-heading-horizontal-lines": "true",
+		"horizontal-line-length":           "55",
+		"include-headings":                 "true",
+		"include-selahs":                   "true",
+		"indent-using":                     "space",
+		"indent-paragraphs":                "2",
+		"indent-poetry":                    "true",
+		"indent-poetry-lines":              "4",
+		"indent-declares":                  "40",
+		"indent-psalm-doxology":            "30",
+		"line-length":                      "80", // default 0 (unlimited)
 	}
 )
 
 // get a passage of scripture by reference from the ESV Web API
-func query(ref string) string {
+func query(ref string) passage {
 
 	vals := &url.Values{}
-	vals.Set("passage", ref)
+	vals.Set("q", ref)
 	for k, v := range opts {
 		vals.Set(k, v)
 	}
@@ -46,7 +53,13 @@ func query(ref string) string {
 
 	req, err := http.NewRequest("GET", url.String(), nil)
 
-	// req.Header.Set("", "")
+	token, ok := os.LookupEnv("ESVTOKEN")
+	if !ok {
+		log.Fatal("missing env var: ESVTOKEN")
+	}
+
+	req.Header.Set("Authorization", "Token "+token)
+	req.Header.Set("Accept", "application/json")
 
 	res, err := (&http.Client{}).Do(req)
 	if err != nil {
@@ -61,16 +74,23 @@ func query(ref string) string {
 		log.Fatal(err)
 	}
 
-	return buf.String()
+	var passage passage
+	err = json.Unmarshal(buf.Bytes(), &passage)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return passage
 }
 
 // renders the given passage reference
-func render(ref string) {
+func render(ref []string) {
 	t, _ := template.New("all").Parse("{{.}}\n")
 
-	err := t.Execute(os.Stdout, ref)
-
-	if err != nil {
-		log.Fatal(err)
+	for _, s := range ref {
+		err := t.Execute(os.Stdout, s)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 }

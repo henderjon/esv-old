@@ -1,8 +1,8 @@
 package main
 
-func getExtendedSet() map[int]map[int]passage {
-	return map[int]map[int]passage{
-		2016: map[int]passage{
+func getExtendedSet() map[int]map[int]fighterVerse {
+	return map[int]map[int]fighterVerse{
+		2016: map[int]fighterVerse{
 			1:  {Year: 2016, Week: 1, BibleOrder: 0, Set: "Extended", Ref: "Philippians 1:1-2"},
 			2:  {Year: 2016, Week: 2, BibleOrder: 0, Set: "Extended", Ref: "Philippians 1:3-6"},
 			3:  {Year: 2016, Week: 3, BibleOrder: 0, Set: "Extended", Ref: "Philippians 1:7-8"},
@@ -56,7 +56,7 @@ func getExtendedSet() map[int]map[int]passage {
 			51: {Year: 2016, Week: 51, BibleOrder: 0, Set: "Extended", Ref: "Philippians 4:21-23"},
 			52: {Year: 2016, Week: 52, BibleOrder: 0, Set: "Extended", Ref: "Philippians 1-4"},
 		},
-		2017: map[int]passage{
+		2017: map[int]fighterVerse{
 			1:  {Year: 2017, Week: 1, BibleOrder: 0, Set: "Extended", Ref: "Romans 5:1-2"},
 			2:  {Year: 2017, Week: 2, BibleOrder: 0, Set: "Extended", Ref: "Romans 5:3-5"},
 			3:  {Year: 2017, Week: 3, BibleOrder: 0, Set: "Extended", Ref: "Romans 5:6-8"},
@@ -110,7 +110,7 @@ func getExtendedSet() map[int]map[int]passage {
 			51: {Year: 2017, Week: 51, BibleOrder: 0, Set: "Extended", Ref: "Romans 8:37-39"},
 			52: {Year: 2017, Week: 52, BibleOrder: 0, Set: "Extended", Ref: "Romans 5-8"},
 		},
-		2018: map[int]passage{
+		2018: map[int]fighterVerse{
 			1:  {Year: 2018, Week: 1, BibleOrder: 0, Set: "Extended", Ref: "Colossians 1:9-10"},
 			2:  {Year: 2018, Week: 2, BibleOrder: 0, Set: "Extended", Ref: "Colossians 1:11-12"},
 			3:  {Year: 2018, Week: 3, BibleOrder: 0, Set: "Extended", Ref: "Colossians 1:13-14"},
@@ -164,7 +164,7 @@ func getExtendedSet() map[int]map[int]passage {
 			51: {Year: 2018, Week: 51, BibleOrder: 0, Set: "Extended", Ref: "John 1:14-15"},
 			52: {Year: 2018, Week: 52, BibleOrder: 0, Set: "Extended", Ref: "John 1:16-18"},
 		},
-		2019: map[int]passage{
+		2019: map[int]fighterVerse{
 			1:  {Year: 2019, Week: 1, BibleOrder: 0, Set: "Extended", Ref: "James 1:1-3"},
 			2:  {Year: 2019, Week: 2, BibleOrder: 0, Set: "Extended", Ref: "James 1:4-5"},
 			3:  {Year: 2019, Week: 3, BibleOrder: 0, Set: "Extended", Ref: "James 1:6-8"},
@@ -218,7 +218,7 @@ func getExtendedSet() map[int]map[int]passage {
 			51: {Year: 2019, Week: 51, BibleOrder: 0, Set: "Extended", Ref: "James 5:19-20"},
 			52: {Year: 2019, Week: 52, BibleOrder: 0, Set: "Extended", Ref: "James 1-5"},
 		},
-		2020: map[int]passage{
+		2020: map[int]fighterVerse{
 			1:  {Year: 2020, Week: 1, BibleOrder: 0, Set: "Extended", Ref: "Matthew 5:1-3"},
 			2:  {Year: 2020, Week: 2, BibleOrder: 0, Set: "Extended", Ref: "Matthew 5:4-6"},
 			3:  {Year: 2020, Week: 3, BibleOrder: 0, Set: "Extended", Ref: "Matthew 5:7-9"},

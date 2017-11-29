@@ -1,8 +1,8 @@
 package main
 
-func getFoundationsSet() map[int]map[int]passage {
-	return map[int]map[int]passage{
-		2016: map[int]passage{
+func getFoundationsSet() map[int]map[int]fighterVerse {
+	return map[int]map[int]fighterVerse{
+		2016: map[int]fighterVerse{
 			1:  {BibleOrder: 1, Year: 2016, Week: 1, Set: "Foundation", Ref: "Genesis 1:1"},
 			2:  {BibleOrder: 50, Year: 2016, Week: 2, Set: "Foundation", Ref: "Matthew 6:24"},
 			3:  {BibleOrder: 39, Year: 2016, Week: 3, Set: "Foundation", Ref: "Proverbs 3:5"},
@@ -56,7 +56,7 @@ func getFoundationsSet() map[int]map[int]passage {
 			51: {BibleOrder: 40, Year: 2016, Week: 51, Set: "Foundation", Ref: "Proverbs 3:11-12"},
 			52: {BibleOrder: 74, Year: 2016, Week: 52, Set: "Foundation", Ref: "1 Peter 5:7"},
 		},
-		2017: map[int]passage{
+		2017: map[int]fighterVerse{
 			1:  {BibleOrder: 67, Year: 2017, Week: 1, Set: "Foundation", Ref: "Philippians 4:11b"},
 			2:  {BibleOrder: 46, Year: 2017, Week: 2, Set: "Foundation", Ref: "Proverbs 29:11"},
 			3:  {BibleOrder: 11, Year: 2017, Week: 3, Set: "Foundation", Ref: "Deuteronomy 6:5"},
@@ -110,7 +110,7 @@ func getFoundationsSet() map[int]map[int]passage {
 			51: {BibleOrder: 8, Year: 2017, Week: 51, Set: "Foundation", Ref: "Exodus 20:16"},
 			52: {BibleOrder: 9, Year: 2017, Week: 52, Set: "Foundation", Ref: "Exodus 20:17a"},
 		},
-		2018: map[int]passage{
+		2018: map[int]fighterVerse{
 			1:  {BibleOrder: 1, Year: 2018, Week: 1, Set: "Foundation", Ref: "Genesis 1:1"},
 			2:  {BibleOrder: 50, Year: 2018, Week: 2, Set: "Foundation", Ref: "Matthew 6:24"},
 			3:  {BibleOrder: 39, Year: 2018, Week: 3, Set: "Foundation", Ref: "Proverbs 3:5"},
@@ -164,7 +164,7 @@ func getFoundationsSet() map[int]map[int]passage {
 			51: {BibleOrder: 40, Year: 2018, Week: 51, Set: "Foundation", Ref: "Proverbs 3:11-12"},
 			52: {BibleOrder: 74, Year: 2018, Week: 52, Set: "Foundation", Ref: "1 Peter 5:7"},
 		},
-		2019: map[int]passage{
+		2019: map[int]fighterVerse{
 			1:  {BibleOrder: 67, Year: 2019, Week: 1, Set: "Foundation", Ref: "Philippians 4:11b"},
 			2:  {BibleOrder: 46, Year: 2019, Week: 2, Set: "Foundation", Ref: "Proverbs 29:11"},
 			3:  {BibleOrder: 11, Year: 2019, Week: 3, Set: "Foundation", Ref: "Deuteronomy 6:5"},
@@ -218,7 +218,7 @@ func getFoundationsSet() map[int]map[int]passage {
 			51: {BibleOrder: 8, Year: 2019, Week: 51, Set: "Foundation", Ref: "Exodus 20:16"},
 			52: {BibleOrder: 9, Year: 2019, Week: 52, Set: "Foundation", Ref: "Exodus 20:17a"},
 		},
-		2020: map[int]passage{
+		2020: map[int]fighterVerse{
 			1:  {BibleOrder: 1, Year: 2020, Week: 1, Set: "Foundation", Ref: "Genesis 1:1"},
 			2:  {BibleOrder: 50, Year: 2020, Week: 2, Set: "Foundation", Ref: "Matthew 6:24"},
 			3:  {BibleOrder: 39, Year: 2020, Week: 3, Set: "Foundation", Ref: "Proverbs 3:5"},
